@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * REST controller user connected requestst.
+ * Контроллер позволяющий получить список пользователей по запросу
  *
  */
 

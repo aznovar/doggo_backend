@@ -1,11 +1,11 @@
 package com.doggo.app.model.dto;
 
+import com.doggo.app.model.entities.User;
 import lombok.Data;
 
 /**
  * DTO class for authentication (login) request.
  *
- * @author Eugene Suleimanov
  * @version 1.0
  */
 
@@ -13,4 +13,12 @@ import lombok.Data;
 public class AuthenticationRequestDto {
     private String username;
     private String password;
+
+
+    public User toUser(){
+        User user = new User();
+        user.setUsername(username);
+        user.setPassword(password);
+        return user;
+    }
 }
