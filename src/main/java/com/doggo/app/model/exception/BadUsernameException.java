@@ -1,6 +1,6 @@
 package com.doggo.app.model.exception;
 
-import javax.naming.AuthenticationException;
+import org.springframework.security.core.AuthenticationException;
 
 public class BadUsernameException extends AuthenticationException {
 
