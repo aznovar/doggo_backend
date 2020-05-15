@@ -1,5 +1,6 @@
 package com.doggo.app.model.service;
 
+import com.doggo.app.model.entities.Dog;
 import com.doggo.app.model.entities.User;
 
 import java.util.List;
