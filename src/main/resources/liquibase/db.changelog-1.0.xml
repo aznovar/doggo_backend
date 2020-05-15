@@ -137,13 +137,6 @@
     </changeSet>
 
     <changeSet id="1.0.8" author="Nik Volk">
-        <createTable tableName="dogs_owners">
-            <column name="dog_id" type="BIGINT"/>
-            <column name="user_id" type="BIGINT"/>
-        </createTable>
-    </changeSet>
-
-    <changeSet id="1.0.9" author="Nik Volk">
         <addForeignKeyConstraint baseColumnNames="dog_id"
                                  baseTableName="dogs_owners"
                                  constraintName="fk_dogs_owners_dogs"
@@ -153,7 +146,7 @@
                                  referencedTableName="dogs"/>
     </changeSet>
 
-    <changeSet id="1.0.10" author="Nik Volk">
+    <changeSet id="1.0.9" author="Nik Volk">
         <addForeignKeyConstraint baseColumnNames="user_id"
                                  baseTableName="dogs_owners"
                                  constraintName="fk_dogs_owners_users"
