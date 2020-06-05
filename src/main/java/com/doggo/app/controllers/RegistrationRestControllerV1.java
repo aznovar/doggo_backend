@@ -32,7 +32,6 @@ public class RegistrationRestControllerV1 {
         this.jwtTokenProvider = jwtTokenProvider;
     }
 
-    //TODO Временное решение. Надо будет привести к нормальному виду
     @RequestMapping(value = "/api/v1/registration", method = RequestMethod.POST)
     public String userRegistration(@RequestBody AuthenticationRequestDto requestDto) {
         User user = userService.findByUsername(requestDto.getUsername());

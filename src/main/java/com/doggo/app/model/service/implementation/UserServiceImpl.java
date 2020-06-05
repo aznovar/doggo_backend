@@ -31,7 +31,6 @@ public class UserServiceImpl implements UserService {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
-    //TODO запилить котроллер на регистрацию
     @Override
     public User register(User user) {
         Role roleUser = roleRepository.findByName("ROLE_USER");

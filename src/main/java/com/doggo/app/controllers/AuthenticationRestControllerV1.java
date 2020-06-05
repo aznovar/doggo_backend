@@ -56,8 +56,11 @@ public class AuthenticationRestControllerV1 {
             String token = jwtTokenProvider.createToken(username, user.getRoles());
 
             Map<Object, Object> response = new HashMap<>();
+            response.put("id", user.getId());
             response.put("username", username);
             response.put("token", token);
+            response.put("status", user.getStatus());
+            response.put("dateOfRegistration", user.getCreated());
 
             return ResponseEntity.ok(response);
         } catch (AuthenticationException e) {
