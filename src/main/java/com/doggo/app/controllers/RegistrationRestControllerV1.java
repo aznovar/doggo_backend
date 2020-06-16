@@ -1,8 +1,6 @@
 package com.doggo.app.controllers;
 
-
 import com.doggo.app.model.dto.AuthenticationRequestDto;
-import com.doggo.app.model.dto.UserDto;
 import com.doggo.app.model.entities.User;
 import com.doggo.app.model.exception.UserAlreadyExistException;
 import com.doggo.app.model.service.UserService;
@@ -12,9 +10,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Контроллер позволяющий пользователю зарегистрироваться

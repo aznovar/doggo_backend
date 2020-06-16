@@ -1,6 +1,7 @@
 package com.doggo.app.controllers;
 
 import com.doggo.app.model.dto.AuthenticationRequestDto;
+import com.doggo.app.model.dto.UserDto;
 import com.doggo.app.model.entities.User;
 import com.doggo.app.model.service.UserService;
 import com.doggo.app.security.jwt.JwtTokenProvider;
@@ -52,15 +53,14 @@ public class AuthenticationRestControllerV1 {
             if (user == null) {
                 throw new UsernameNotFoundException("User with username: " + username + " not found");
             }
-
             String token = jwtTokenProvider.createToken(username, user.getRoles());
+            UserDto infoAboutUser = UserDto.fromUser(user);
+            infoAboutUser.setToken(token);
 
             Map<Object, Object> response = new HashMap<>();
-            response.put("id", user.getId());
-            response.put("username", username);
-            response.put("token", token);
-            response.put("status", user.getStatus());
-            response.put("dateOfRegistration", user.getCreated());
+            response.put("success", "1");
+            response.put("message", "user successfully log in");
+            response.put("user", infoAboutUser);
 
             return ResponseEntity.ok(response);
         } catch (AuthenticationException e) {
