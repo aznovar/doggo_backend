@@ -1,6 +1,5 @@
 package com.doggo.app.controllers;
 
-
 import com.doggo.app.helpers.RegistrationHelper;
 import com.doggo.app.model.dto.AuthenticationRequestDto;
 import com.doggo.app.model.entities.User;
@@ -32,7 +31,7 @@ public class RegistrationRestControllerV1 {
         this.registrationHelper = registrationHelper;
     }
 
-    //TODO Временное решение. Надо будет привести к нормальному виду + понять почему возвращается 403 ошибка в любом случае
+
     @RequestMapping(value = "/api/v1/registration", method = RequestMethod.POST)
     public String userRegistration(@RequestBody AuthenticationRequestDto requestDto) {
         User user = userService.findByUsername(requestDto.getUsername());
