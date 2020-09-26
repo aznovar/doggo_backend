@@ -1,7 +1,8 @@
-package com.doggo.app.messageservice.models;
+package com.doggo.app.messageservice.model;
 
 import lombok.Data;
 
+@Deprecated
 @Data
 public class Message {
     private String type;
