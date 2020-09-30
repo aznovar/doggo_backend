@@ -50,17 +50,18 @@ public class FriendshipManipulationController {
 
     @GetMapping(value = "getRequests/{id}")
     public void getActiveFriendshipRequests(@PathVariable(name = "id") Long id) {
-
+        List<User> friendshipRelation = friendshipRelationService
+                .getInfoAboutFriendshipRequest(id);
     }
 
-    @PostMapping()
-    public void approveFriendshipRequest(){
-        
-    }
-
-
-    @PostMapping()
-    public void declineFriendshipRequest(){
-
-    }
+//    @PostMapping()
+//    public void approveFriendshipRequest(){
+//
+//    }
+//
+//
+//    @PostMapping()
+//    public void declineFriendshipRequest(){
+//
+//    }
 }
