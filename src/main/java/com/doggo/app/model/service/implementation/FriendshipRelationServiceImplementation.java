@@ -37,8 +37,17 @@ public class FriendshipRelationServiceImplementation implements FriendshipRelati
     public List<User> getInfoAboutFriendshipRequest(Long id) {
         List<User> friendshipRelation = userRepository.
                 getInfoById(id);
-
-
         return friendshipRelation;
+    }
+
+    @Override
+    public Long getFriendsId(Long reqId, Long apprId){
+     return friendshipRelationRepository
+                .getFriendsId(reqId,apprId);
+    }
+
+    @Override
+    public void updateTypeAfterApproveFriendsRequest(Long friendsId){
+        friendshipRelationRepository.updateType(friendsId);
     }
 }

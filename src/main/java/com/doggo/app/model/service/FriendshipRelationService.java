@@ -11,4 +11,8 @@ public interface FriendshipRelationService {
     FriendshipRelation findAllByRequestAndApproveId(Long requestId, Long approveId);
 
     List<User> getInfoAboutFriendshipRequest(Long id);
+
+    Long getFriendsId(Long reqId, Long apprId);
+
+    void updateTypeAfterApproveFriendsRequest(Long friendsId);
 }

@@ -1,6 +1,7 @@
 package com.doggo.app.controllers;
 
 
+import com.doggo.app.model.dto.FriendshipDto;
 import com.doggo.app.model.entities.FriendshipRelation;
 import com.doggo.app.model.entities.User;
 import com.doggo.app.model.repository.FriendshipRelationRepository;
@@ -54,10 +55,13 @@ public class FriendshipManipulationController {
                 .getInfoAboutFriendshipRequest(id);
     }
 
-//    @PostMapping()
-//    public void approveFriendshipRequest(){
-//
-//    }
+    @PostMapping("approveFriendship")
+    public void approveFriendshipRequest(@RequestBody FriendshipDto friendshipDto){
+        Long requestUserId = friendshipDto.getRequestUserId();
+        Long approveUserID = friendshipDto.getApproveUserId();
+        Long friendsId = friendshipRelationService.getFriendsId(requestUserId,approveUserID);
+        friendshipRelationService.updateTypeAfterApproveFriendsRequest(friendsId);
+    }
 //
 //
 //    @PostMapping()
