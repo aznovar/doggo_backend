@@ -38,16 +38,6 @@ public class RegistrationRestControllerV1 {
         if (user != null) {
             throw new UserAlreadyExistException("Пользователь с именем:" + user.getUsername() +
                     " уже зарегистрирован");
-        }
-
-        //TODO carryweight переделай валидаторы, т.к. сейчас они факапят регистрацию
-//         if (!registrationHelper.validateUsername(requestDto.getUsername()))
-//             throw new BadUsernameException("Имя пользователя должно содержать от 3 до 20 символов латиницей");
-
-
-//         if (!registrationHelper.validatePassword(requestDto.getPassword()))
-//             throw new BadPasswordException("Пароль должен быть не менее 8 символов и содержать в себе, как минимум, 1 цифру, 1 спецсимвол, буквы малой и большой высоты");
-
         user = requestDto.toUser();
         userService.register(user);
         return "welcome";

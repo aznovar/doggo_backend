@@ -1,7 +1,7 @@
 package com.doggo.app.messageservice.controllers;
 
-import com.doggo.app.messageservice.models.Message;
-import com.doggo.app.messageservice.models.OutputMessage;
+import com.doggo.app.messageservice.model.Message;
+import com.doggo.app.messageservice.model.OutputMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.MessageMapping;

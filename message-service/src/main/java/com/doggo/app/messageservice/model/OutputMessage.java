@@ -1,10 +1,11 @@
-package com.doggo.app.messageservice.models;
+package com.doggo.app.messageservice.model;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@Deprecated
 public class OutputMessage extends Message {
 
     private String time;
