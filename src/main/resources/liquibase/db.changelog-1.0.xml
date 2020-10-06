@@ -96,4 +96,45 @@
             <column name="name" value="ROLE_ADMIN"/>
         </insert>
     </changeSet>
+
+    <changeSet id="1.0.6" author="Andrew Che">
+        <createTable tableName="friends_relation">
+            <column name="request_user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="approve_user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type" type="Int">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1.0.6.1" author="Andrew Che">
+        <addColumn tableName="friends_relation">
+            <column name="friends_id" type="BIGINT" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="1.0.6.2" author="Andrew Che">
+        <update tableName="friends_relation">
+            <column name="type" type="Int" autoIncrement="true" defaultValue="0">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+        </update>
+    </changeSet>
+
+    <changeSet id="1.0.7" author="Andrew Che">
+        <addForeignKeyConstraint baseColumnNames="request_user_id"
+                                 baseTableName="friends_relation"
+                                 constraintName="fk_request_user_id_user_id"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="users"/>
+    </changeSet>
+
 </databaseChangeLog>
