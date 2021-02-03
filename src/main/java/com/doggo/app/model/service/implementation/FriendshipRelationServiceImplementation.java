@@ -1,6 +1,7 @@
 package com.doggo.app.model.service.implementation;
 
 
+import com.doggo.app.model.dto.FriendshipRequestDto;
 import com.doggo.app.model.entities.FriendshipRelation;
 import com.doggo.app.model.entities.User;
 import com.doggo.app.model.repository.FriendshipRelationRepository;
@@ -34,8 +35,8 @@ public class FriendshipRelationServiceImplementation implements FriendshipRelati
     }
 
     @Override
-    public List<User> getInfoAboutFriendshipRequest(Long id) {
-        List<User> friendshipRelation = userRepository.
+    public List<FriendshipRequestDto> getInfoAboutFriendshipRequest(Long id) {
+        List<FriendshipRequestDto> friendshipRelation = userRepository.
                 getInfoById(id);
         return friendshipRelation;
     }

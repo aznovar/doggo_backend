@@ -1,17 +1,22 @@
 package com.doggo.app.controllers;
 
 
+import com.doggo.app.model.dto.AddFriendDto;
 import com.doggo.app.model.dto.FriendshipDto;
+import com.doggo.app.model.dto.FriendshipRequestDto;
 import com.doggo.app.model.entities.FriendshipRelation;
 import com.doggo.app.model.entities.User;
 import com.doggo.app.model.repository.FriendshipRelationRepository;
 import com.doggo.app.model.service.FriendshipRelationService;
 import com.doggo.app.model.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/api/v1/friendship/")
@@ -30,9 +35,10 @@ public class FriendshipManipulationController {
         this.friendshipRelationRepository = friendshipRelationRepository;
     }
 
-    @GetMapping(value = "add/{username}/{id}")
-    public void friendshipAddRequest(@PathVariable(name = "username") String username,
-                                     @PathVariable(name = "id") Long id) {
+    @PostMapping(value = "addFriend")
+    public void friendshipAddRequest(@RequestBody AddFriendDto addFriendDto) {
+        String username = addFriendDto.getUsername();
+        Long id = addFriendDto.getId();
         User user = userService.findByUsername(username);
         if (user == null) {
             throw new UsernameNotFoundException("User with username: " + username + " not found");
@@ -50,9 +56,15 @@ public class FriendshipManipulationController {
     }
 
     @GetMapping(value = "getRequests/{id}")
-    public void getActiveFriendshipRequests(@PathVariable(name = "id") Long id) {
-        List<User> friendshipRelation = friendshipRelationService
+    public ResponseEntity getActiveFriendshipRequests(@PathVariable(name = "id") Long id) {
+        List<FriendshipRequestDto> friendshipRelation = friendshipRelationService
                 .getInfoAboutFriendshipRequest(id);
+
+        Map<Object, Object> response = new HashMap<>();
+        response.put("success", "1");
+        response.put("message", "users friend request");
+        response.put("friendsRequest", friendshipRelation);
+        return ResponseEntity.ok(response);
     }
 
     @PostMapping("approveFriendship")

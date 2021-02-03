@@ -1,6 +1,7 @@
 package com.doggo.app.model.service;
 
 
+import com.doggo.app.model.dto.FriendshipRequestDto;
 import com.doggo.app.model.entities.FriendshipRelation;
 import com.doggo.app.model.entities.User;
 
@@ -10,7 +11,7 @@ public interface FriendshipRelationService {
 
     FriendshipRelation findAllByRequestAndApproveId(Long requestId, Long approveId);
 
-    List<User> getInfoAboutFriendshipRequest(Long id);
+    List<FriendshipRequestDto> getInfoAboutFriendshipRequest(Long id);
 
     Long getFriendsId(Long reqId, Long apprId);
 
