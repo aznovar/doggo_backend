@@ -38,6 +38,7 @@ public class RegistrationRestControllerV1 {
         if (user != null) {
             throw new UserAlreadyExistException("Пользователь с именем:" + user.getUsername() +
                     " уже зарегистрирован");
+        }
         user = requestDto.toUser();
         userService.register(user);
         return "welcome";
