@@ -13,6 +13,8 @@ public interface FriendshipRelationService {
 
     List<FriendshipRequestDto> getInfoAboutFriendshipRequest(Long id);
 
+    List<FriendshipRequestDto> getInfoAboutFriendshipList(Long id);
+
     Long getFriendsId(Long reqId, Long apprId);
 
     void updateTypeAfterApproveFriendsRequest(Long friendsId);

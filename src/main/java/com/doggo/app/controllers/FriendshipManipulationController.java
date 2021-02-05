@@ -59,11 +59,21 @@ public class FriendshipManipulationController {
     public ResponseEntity getActiveFriendshipRequests(@PathVariable(name = "id") Long id) {
         List<FriendshipRequestDto> friendshipRelation = friendshipRelationService
                 .getInfoAboutFriendshipRequest(id);
-
         Map<Object, Object> response = new HashMap<>();
         response.put("success", "1");
         response.put("message", "users friend request");
         response.put("friendsRequest", friendshipRelation);
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping(value = "getFriendshipList/{id}")
+    public ResponseEntity getFriendshipList(@PathVariable(name = "id") Long id){
+        List<FriendshipRequestDto> friendshipRelation = friendshipRelationService
+                .getInfoAboutFriendshipList(id);
+        Map<Object, Object> response = new HashMap<>();
+        response.put("success", "1");
+        response.put("message", "users friend list");
+        response.put("friendsList", friendshipRelation);
         return ResponseEntity.ok(response);
     }
 
