@@ -3,7 +3,6 @@ package com.doggo.app.model.service.implementation;
 
 import com.doggo.app.model.dto.FriendshipRequestDto;
 import com.doggo.app.model.entities.FriendshipRelation;
-import com.doggo.app.model.entities.User;
 import com.doggo.app.model.repository.FriendshipRelationRepository;
 import com.doggo.app.model.repository.UserRepository;
 import com.doggo.app.model.service.FriendshipRelationService;
@@ -29,26 +28,33 @@ public class FriendshipRelationServiceImplementation implements FriendshipRelati
 
     @Override
     public FriendshipRelation findAllByRequestAndApproveId(Long requestId, Long approveId) {
-        FriendshipRelation friendshipRelation = friendshipRelationRepository.
-                findByRequestUserIdAndApproveUserId(requestId, approveId);
+        FriendshipRelation friendshipRelation = friendshipRelationRepository
+                .findByRequestUserIdAndApproveUserId(requestId, approveId);
         return friendshipRelation;
     }
 
     @Override
     public List<FriendshipRequestDto> getInfoAboutFriendshipRequest(Long id) {
-        List<FriendshipRequestDto> friendshipRelation = userRepository.
-                getInfoById(id);
+        List<FriendshipRequestDto> friendshipRelation = userRepository
+                .getInfoAboutFriendshipRequestById(id);
         return friendshipRelation;
     }
 
     @Override
-    public Long getFriendsId(Long reqId, Long apprId){
-     return friendshipRelationRepository
-                .getFriendsId(reqId,apprId);
+    public List<FriendshipRequestDto> getInfoAboutFriendshipList(Long id) {
+        List<FriendshipRequestDto> friendshipRelation = userRepository
+                .getInfoAboutFriendshipListById(id);
+        return friendshipRelation;
     }
 
     @Override
-    public void updateTypeAfterApproveFriendsRequest(Long friendsId){
+    public Long getFriendsId(Long reqId, Long apprId) {
+        return friendshipRelationRepository
+                .getFriendsId(reqId, apprId);
+    }
+
+    @Override
+    public void updateTypeAfterApproveFriendsRequest(Long friendsId) {
         friendshipRelationRepository.updateType(friendsId);
     }
 }
