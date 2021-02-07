@@ -10,8 +10,12 @@ import java.util.Optional;
 @Service
 public class ChatRoomService {
 
+    private final ChatRoomRepository chatRoomRepository;
+
     @Autowired
-    private ChatRoomRepository chatRoomRepository;
+    public ChatRoomService(ChatRoomRepository chatRoomRepository){
+        this.chatRoomRepository = chatRoomRepository;
+    }
 
     public Optional<String> getChatId(
             String senderId, String recipientId, boolean createIfNotExist) {

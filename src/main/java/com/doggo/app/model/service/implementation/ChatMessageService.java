@@ -17,14 +17,19 @@ import java.util.List;
 
 @Service
 public class ChatMessageService {
-    @Autowired
-    private ChatMessageRepository repository;
+
+    private final ChatMessageRepository repository;
+    private final ChatRoomService chatRoomService;
+    private final MongoOperations mongoOperations;
 
     @Autowired
-    private ChatRoomService chatRoomService;
+    public ChatMessageService(ChatMessageRepository chatMessageRepository, ChatRoomService chatRoomService
+            , MongoOperations mongoOperations) {
+        this.repository = chatMessageRepository;
+        this.chatRoomService = chatRoomService;
+        this.mongoOperations = mongoOperations;
 
-    @Autowired
-    private MongoOperations mongoOperations;
+    }
 
     public ChatMessage save(ChatMessage chatMessage) {
         chatMessage.setStatus(MessageStatus.RECEIVED);
@@ -43,7 +48,7 @@ public class ChatMessageService {
         var messages =
                 chatId.map(cId -> repository.findByChatId(cId)).orElse(new ArrayList<>());
 
-        if(messages.size() > 0) {
+        if (messages.size() > 0) {
             updateStatuses(senderId, recipientId, MessageStatus.DELIVERED);
         }
 
