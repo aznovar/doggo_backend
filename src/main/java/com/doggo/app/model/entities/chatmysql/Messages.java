@@ -1,8 +1,10 @@
 package com.doggo.app.model.entities.chatmysql;
 
 import lombok.Data;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "messages")
@@ -26,6 +28,7 @@ public class Messages {
     @Column(name = "message_type_id")
     private Integer messageTypeId;
 
+    @CreatedDate
     @Column(name = "message_date")
-    private Long messageDate;
+    private Date messageDate;
 }

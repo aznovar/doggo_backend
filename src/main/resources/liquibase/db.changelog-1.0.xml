@@ -159,4 +159,9 @@
             </column>
         </createTable>
     </changeSet>
+
+    <changeSet id="1.0.11" author="Andrew Che">
+        <modifyDataType tableName="messages" columnName="message_date" newDataType="TIMESTAMP"/>
+    </changeSet>
+
 </databaseChangeLog>
