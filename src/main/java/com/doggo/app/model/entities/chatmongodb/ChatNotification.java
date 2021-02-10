@@ -1,4 +1,4 @@
-package com.doggo.app.model.entities.chat;
+package com.doggo.app.model.entities.chatmongodb;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

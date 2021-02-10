@@ -1,6 +1,6 @@
 package com.doggo.app.model.service.implementation;
 
-import com.doggo.app.model.entities.chat.ChatRoom;
+import com.doggo.app.model.entities.chatmongodb.ChatRoom;
 import com.doggo.app.model.repository.ChatRoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

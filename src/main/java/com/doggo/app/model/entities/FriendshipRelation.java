@@ -19,5 +19,4 @@ public class FriendshipRelation extends BaseFriendsEntity implements Serializabl
     @Column(name = "type")
     private int type;
 
-
 }

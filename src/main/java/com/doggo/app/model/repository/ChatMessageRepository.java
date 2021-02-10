@@ -1,7 +1,7 @@
 package com.doggo.app.model.repository;
 
-import com.doggo.app.model.entities.chat.ChatMessage;
-import com.doggo.app.model.entities.chat.MessageStatus;
+import com.doggo.app.model.entities.chatmongodb.ChatMessage;
+import com.doggo.app.model.entities.chatmongodb.MessageStatus;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;

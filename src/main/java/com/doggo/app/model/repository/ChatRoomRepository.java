@@ -1,6 +1,6 @@
 package com.doggo.app.model.repository;
 
-import com.doggo.app.model.entities.chat.ChatRoom;
+import com.doggo.app.model.entities.chatmongodb.ChatRoom;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.Optional;

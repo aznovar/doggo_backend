@@ -1,8 +1,8 @@
 package com.doggo.app.model.service.implementation;
 
 
-import com.doggo.app.model.entities.chat.ChatMessage;
-import com.doggo.app.model.entities.chat.MessageStatus;
+import com.doggo.app.model.entities.chatmongodb.ChatMessage;
+import com.doggo.app.model.entities.chatmongodb.MessageStatus;
 import com.doggo.app.model.exception.ResourceNotFoundException;
 import com.doggo.app.model.repository.ChatMessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;

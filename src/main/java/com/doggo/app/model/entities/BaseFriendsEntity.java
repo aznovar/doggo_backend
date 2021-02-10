@@ -13,6 +13,4 @@ public class BaseFriendsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long friends_id;
-
-
 }
