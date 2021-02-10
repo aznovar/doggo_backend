@@ -1,7 +1,7 @@
 package com.doggo.app.controllers;
 
-import com.doggo.app.model.entities.chat.ChatMessage;
-import com.doggo.app.model.entities.chat.ChatNotification;
+import com.doggo.app.model.entities.chatmongodb.ChatMessage;
+import com.doggo.app.model.entities.chatmongodb.ChatNotification;
 import com.doggo.app.model.service.implementation.ChatMessageService;
 import com.doggo.app.model.service.implementation.ChatRoomService;
 import org.springframework.beans.factory.annotation.Autowired;

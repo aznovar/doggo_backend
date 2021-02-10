@@ -28,6 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private static final String REGISTRATION_ENDPOINT = "/api/v1/registration";
     private static final String FRIEND_MANIPULATION_ENDPOINT = "/api/v1/friendship/**";
     private static final String GET_INFO_ABOUT_USER = "/api/v1/users/**";
+    private static final String SEND_MESSAGE_ENDPOINT="/api/v1/messaging/**";
 
     @Autowired
     public SecurityConfig(JwtTokenProvider jwtTokenProvider) {
@@ -52,6 +53,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(LOGIN_ENDPOINT).permitAll()
                 .antMatchers(GET_INFO_ABOUT_USER).permitAll()
                 .antMatchers(FRIEND_MANIPULATION_ENDPOINT).permitAll()
+                .antMatchers(SEND_MESSAGE_ENDPOINT).permitAll()
                 .antMatchers(ADMIN_ENDPOINT).hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
