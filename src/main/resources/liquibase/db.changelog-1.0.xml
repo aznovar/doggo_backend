@@ -164,4 +164,8 @@
         <modifyDataType tableName="messages" columnName="message_date" newDataType="TIMESTAMP"/>
     </changeSet>
 
+    <changeSet id="1.0.12" author="Andrew Che">
+        <modifyDataType tableName="messages" columnName="message_date" newDataType="BIGINT"/>
+    </changeSet>
+
 </databaseChangeLog>
