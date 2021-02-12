@@ -1,25 +1,25 @@
 package com.doggo.app.model.service.implementation;
 
+import com.doggo.app.model.dto.GetChatByUserDto;
 import com.doggo.app.model.repository.MessageRepository;
-import com.doggo.app.model.repository.UserRepository;
 import com.doggo.app.model.service.MessageService;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
-@Slf4j
-public class MessageServiceImpl  implements MessageService {
+public class MessageServiceImplementation implements MessageService {
 
     private final MessageRepository messageRepository;
-    private final UserRepository userRepository;
 
     @Autowired
-    public MessageServiceImpl(MessageRepository messageRepository,
-                              UserRepository userRepository){
+    public MessageServiceImplementation(MessageRepository messageRepository){
         this.messageRepository = messageRepository;
-        this.userRepository = userRepository;
     }
 
-
+    @Override
+    public List<GetChatByUserDto> getChatsByUser(Long userId) {
+       return messageRepository.getChatsByUser(userId);
+    }
 }

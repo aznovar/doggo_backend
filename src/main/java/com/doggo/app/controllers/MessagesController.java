@@ -1,15 +1,18 @@
 package com.doggo.app.controllers;
 
+import com.doggo.app.model.dto.GetChatByUserDto;
 import com.doggo.app.model.dto.SendMessageDto;
 import com.doggo.app.model.entities.chatmysql.Messages;
 import com.doggo.app.model.repository.MessageRepository;
 import com.doggo.app.model.service.MessageService;
 import com.doggo.app.model.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/api/v1/messaging/")
@@ -33,13 +36,25 @@ public class MessagesController {
         Long senderId = sendMessageDto.getSenderId();
         Long receiverId = sendMessageDto.getReceiverId();
         String message = sendMessageDto.getMessage();
+        Long messageDate = sendMessageDto.getMessageDate();
         Integer messageType = sendMessageDto.getMessageTypeId();
         Messages messages = new Messages();
         messages.setSenderId(senderId);
         messages.setReceiverId(receiverId);
         messages.setMessage(message);
+        messages.setMessageDate(messageDate);
         messages.setMessageTypeId(messageType);
         messageRepository.save(messages);
+    }
+
+    @GetMapping(value = "getChatsByUser/{userId}")
+    public ResponseEntity getChatsByuser(@PathVariable(name = "userId") Long userId){
+        List<GetChatByUserDto> getChatsByUser = messageService.getChatsByUser(userId);
+        Map<Object, Object> response = new HashMap<>();
+        response.put("success", "1");
+        response.put("message", "users friend request");
+        response.put("friendsRequest", getChatsByUser);
+        return ResponseEntity.ok(response);
     }
 
 }

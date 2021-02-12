@@ -30,5 +30,5 @@ public class Messages {
 
     @CreatedDate
     @Column(name = "message_date")
-    private Date messageDate;
+    private Long messageDate;
 }
