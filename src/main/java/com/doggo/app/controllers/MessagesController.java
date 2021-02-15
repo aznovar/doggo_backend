@@ -48,12 +48,12 @@ public class MessagesController {
     }
 
     @GetMapping(value = "getChatsByUser/{userId}")
-    public ResponseEntity getChatsByuser(@PathVariable(name = "userId") Long userId){
+    public ResponseEntity getChatsByUser(@PathVariable(name = "userId") Long userId){
         List<GetChatByUserDto> getChatsByUser = messageService.getChatsByUser(userId);
         Map<Object, Object> response = new HashMap<>();
         response.put("success", "1");
-        response.put("message", "users friend request");
-        response.put("friendsRequest", getChatsByUser);
+        response.put("message", "user list of chats");
+        response.put("listOfChats", getChatsByUser);
         return ResponseEntity.ok(response);
     }
 
