@@ -57,4 +57,14 @@ public class MessagesController {
         return ResponseEntity.ok(response);
     }
 
+    @GetMapping(value = "getMessagesWithContact/{contactId}/{userId}")
+    public ResponseEntity getMessagesWithContact(@PathVariable(name = "contactId") Long contactId,
+                                                 @PathVariable(name = "userId") Long userId){
+        List<GetChatByUserDto> getMessagesWithContact = messageService.getMessagesWithContact(contactId,userId);
+        Map<Object, Object> response = new HashMap<>();
+        response.put("success", "1");
+        response.put("message", "user list of messages");
+        response.put("listOfMessages", getMessagesWithContact);
+        return ResponseEntity.ok(response);
+    }
 }

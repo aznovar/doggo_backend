@@ -22,4 +22,9 @@ public class MessageServiceImplementation implements MessageService {
     public List<GetChatByUserDto> getChatsByUser(Long userId) {
        return messageRepository.getChatsByUser(userId);
     }
+
+    @Override
+    public List<GetChatByUserDto> getMessagesWithContact(Long contactId, Long userId) {
+        return messageRepository.getMessagesWithContact(contactId, userId);
+    }
 }

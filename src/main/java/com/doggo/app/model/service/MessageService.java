@@ -8,4 +8,6 @@ import java.util.List;
 public interface MessageService {
 
     List<GetChatByUserDto> getChatsByUser(Long userId);
+
+    List<GetChatByUserDto> getMessagesWithContact(Long contactId, Long userId);
 }
