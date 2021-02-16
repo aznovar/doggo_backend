@@ -16,4 +16,10 @@ public interface MessageRepository extends JpaRepository<Messages, Long> {
             " and  m1.messageId < m2.messageId where  m1.senderId = :userId or m1.receiverId = :userId" +
             " and m2.messageId is null order by m1.messageDate desc ")
     List<GetChatByUserDto> getChatsByUser(@Param("userId") Long userId);
+
+
+    @Query(value = "select new com.doggo.app.model.dto.GetChatByUserDto(m.senderId, m.receiverId, m.message," +
+            "m.messageDate, m.messageTypeId ) from Messages  m where (m.senderId = :userId and m.receiverId = :contactId)" +
+            " or (m.senderId = :contactId and m.receiverId = :userId) order by m.messageDate asc ")
+    List<GetChatByUserDto> getMessagesWithContact(@Param("contactId") Long contactId, @Param("userId")Long userId);
 }
